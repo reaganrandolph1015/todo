@@ -13,7 +13,7 @@ class Folder {
     const $div = createElement('div', this.id, ['folder'], null);
     const $title = createElement('dp', null, null, this.title);
     const $delete = createElement('img', null, ['delete'], null);
-    $delete.src = src;
+    $delete.src = src; //TODO: add img src
     $delete.addEventListener('click', () => {
       this.delete();
     });
@@ -29,10 +29,10 @@ class Folder {
         let foldersClass = document.querySelectorAll('.folder');
         foldersClass.forEach((f) => (f.classList.value = 'folder'));
         let delBtns = document.querySelectorAll('.delete');
-        deleteBtns.forEach((button) => (button.src = src));
+        deleteBtns.forEach((button) => (button.src = src)); //TODO: add img src
         if (!$div.classList.value.includes('active')) {
           $div.classList.add('active');
-          $delete.src = src;
+          $delete.src = src; //TODO: add img src
         } else return;
       });
   }
@@ -61,4 +61,4 @@ class Folder {
 let foldersArray = [new Folder('Test Folder')];
 let currentFolder = foldersArray[0];
 
-export { folder, foldersArray, currentFolder };
+export { Folder, foldersArray, currentFolder };
