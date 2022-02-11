@@ -9,148 +9,58 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <div class="menuBtn">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-        <h1 class="logo">ToDo List</h1>
-      </header>
-
-      <div class="content-wrapper">
-        <section class="projects-menu">
-          <h2 class="title">Projects</h2>
-          <h3 class="current-project title-separator">Default</h3>
-          <button class="button" id="new-prj-btn">New Project</button>
-          <div class="project-list-container">
-            <h3 class="title title-seperator">Project List</h3>
-            <div class="project-list">
-              <!-- +proj element-->
-              <!-- -proj element-->
-            </div>
+    <div id="cointainer">
+        <nav>
+          <p>ToDo <span class="todo-list">List</span></p> <!-- .todo-list = .user-name -->
+        </nav>
+        <main>
+          <div id="folders">
+            <form id="form-folder">
+              <input
+                type="text"
+                name="folder-name"
+                id="folder-name"
+                placeholder="New folder"
+              />
+              <input type="submit" value="Create new" />
+            </form>
+            <div class="card"></div>
           </div>
-        </section>
-        <main class="main">
-          <h2 class="title">
-            <span class="opened-prj">Current</span> ToDo List
-          </h2>
-          <button class="button add-todo" id="new-todo-btn">+</button>
-          <div class="todo-list">
-            <!-- Item+-->
-            <!-- Item--->
+          <div id="tasks" class="card">
+            <form id="form-task">
+              <input
+                type="text"
+                name="task-name"
+                id="task-name"
+                placeholder="New task"
+              />
+              <input type="date" name="task-date" id="task-date" />
+              <select name="task-priority" id="task-priority">
+                <option value="important">Important</option> <!-- important = urgent-->
+                <option value="normal">Normal</option>
+              </select>
+              <input type="submit" value="+" />
+            </form>
+            <div id="task-container"></div>
           </div>
         </main>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <form id="form-task-edit">
+              <input
+                type="text"
+                name="task-name"
+                id="task-name-edit"
+                placeholder="New task"
+              />
+              <input type="date" name="task-date" id="task-date-edit" />
+              <select name="task-priority" id="task-priority-edit">
+                <option value="mportant">Important</option> <!-- important = urgent-->
+                <option value="normal">normal</option>
+              </select>
+              <input type="submit" value="Save" />
+            </form>
+          </div>
       </div>
-      <!-- content wrapper -->
-    </div>
-    <!-- new project modal -->
-    <div class="modal-wrapper display-none">
-      <div class="new-project modal">
-        <div class="modal-title"><h2>New Project</h2></div>
-        <div class="modal-content">
-          <label id="new-project-name-label" for="new-project-name"
-            >Project Name</label
-          >
-          <input type="text" id="new-project-name" />
-        </div>
-        <div class="modal-options">
-          <button class="button cancel">Cancel</button>
-          <button class="button create">Create</button>
-        </div>
-      </div>
-    </div>
-    <!-- create todo item modal -->
-    <div class="modal-wrapper display-none">
-      <div class="new-todo modal">
-        <div class="modal-title"><h2>New ToDo</h2></div>
-        <div class="modal-content">
-          <label id="new-todo-title-label" for="new-todo-title">Title</label>
-          <input type="text" id="new-todo-title" />
-          <label id="new-due-date-label" for="new-due-date">Due Date</label>
-          <input type="date" id="new-due-date" />
-          <label id="new-description-label" for="new-description"
-            >Description</label
-          >
-          <textarea id="new-description" rows="6">Fool</textarea>
-          <label id="new-description-label" for="new-priority">Priority</label>
-          <select id="new-priority">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-        </div>
-        <div class="modal-options">
-          <button class="button cancel">Cancel</button>
-          <button class="button create">Create</button>
-        </div>
-      </div>
-    </div>
-    <!-- edit todo item modal -->
-    <div class="modal-wrapper display-none">
-        <div class="edit-todo modal">
-            <div class="modal-title"><h2>Edit ToDo</h2></div>
-            <div class="modal-content">
-                <label id="edit-todo-title-label" for="edit-todo-title">Title</label>
-                <input type="text" id="edit-todo-title" />
-                <label id="edit-due-date-label" for="edit-due-date">Due Date</label>
-                <input type="date" id="edit-due-date" />
-                <label id="edit-description-label" for="edit-description">Description</label>
-                <textarea id="edit-description" rows="6"></textarea>
-          <label id="edit-priority-label" for="edit-priority">Priority</label>
-          <select id="edit-priority">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-        </div>
-        <div class="modal-options">
-          <button class="button cancel">Cancel</button>
-          <button class="button edit">Edit</button>
-        </div>
-      </div>
-    </div>
-    <!-- +todo-info modal-->
-    <div class="modal-wrapper" display-none>
-        <div class="info-todo modal">
-            <div class="modal-title"><h2>Info ToDo</h2></div>
-            <div class="modal-content">
-                <div class="todo-title todo-info">
-                    <h3>Title</h3>
-                    <h2 id="info-todo-title">Create ToDo List</h2>
-                </div>
-                <div class="todo-date todo-info">
-                    <h3>Due Date</h3>
-                    <h2 id="info-due-date">11.21.20XX</h2>
-                </div>
-                <div class="todo-description todo-info">
-                    <h3>Description</h3>
-                    <p id="info-description"></p>
-                </div>
-                <div class="todo-priority todo-info">
-                    <h3>Priority</h3>
-                    <h2 id="info-priority">High</h2>
-                </div> 
-            </div>
-            <div class="modal-options">
-                <button class="button cancel">Cancel</button>
-            </div>
-        </div>
-    </div>
-    <!-- new project modal -->
-    <div class="modal-wrapper display-none">
-        <div class="confirmation modal">
-            <div class="modal-title"><h2>Are you sure?</h2></div>
-            <div class="modal-content">
-                <button class="button yes-btn">Yes</button>
-                <button class="button no-btn">No</button>
-            </div>
-        </div>
-    </div> 
-
-            </div>
-        </div>
-    </div>
   </body>
 </html>
