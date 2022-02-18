@@ -15,10 +15,33 @@ $folderForm.addEventListener('submit', (e) => {
   foldersArray.push(folder);
   $title.value = '';
   Folder.renderFolders();
-  folder.setCurrentFolder(folder);
+  Folder.setCurrentFolder(folder);
   let folders = document.querySelectorAll('.folder');
   folders[folders.length - 1].classList.add('active');
-  folders[folders.length - 1].lastChild.src = src; //TODO: add img src
+  folders[folders.length - 1].lastChild.src = './img/stock.jpg'; //TODO: add img src
 });
 
 const $taskForm = document.getElementById('form-task');
+
+$taskForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const $title = document.getElementById('task-name');
+  if ($title.value === '') {
+    alert('Task must have a name');
+    return;
+  }
+  const $date = document.getElementById('task-date');
+  if ($date.value === '') {
+    alert('Please choose a deadline.');
+    return;
+  }
+  const $priority = document.getElementById('task-priority');
+
+  const task = new Task($title.value, $date.value, $priority.value);
+  currentFolder.tasks.push(task);
+  task.render();
+});
+
+Folder.renderFolders();
+const user = prompt(`What's your first name?`);
+document.querySelector('.user-name').innerText = user || 'User';

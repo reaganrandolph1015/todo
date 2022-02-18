@@ -24,9 +24,9 @@ export class Task {
     const $badge = createElement('div', null, ['badge'], this.priority);
 
     const $delete = createElement('img', null, ['edit'], null);
-    $delete.src = null; //TODO: add img src
+    $delete.src = './img/stock.jpg'; //TODO: add img src
     const $edit = createElement('img', null, ['edit'], null);
-    $edit.src = null; //TODO: add img src
+    $edit.src = './img/stock.jpg'; //TODO: add img src
     $edit.addEventListener('click', () => {
       this.edit();
     });

@@ -13,7 +13,7 @@ class Folder {
     const $div = createElement('div', this.id, ['folder'], null);
     const $title = createElement('dp', null, null, this.title);
     const $delete = createElement('img', null, ['delete'], null);
-    $delete.src = src; //TODO: add img src
+    $delete.src = './img/stock.jpg'; //TODO: add img src
     $delete.addEventListener('click', () => {
       this.delete();
     });
@@ -22,19 +22,18 @@ class Folder {
     $div.appendChild($delete);
 
     $folder.appendChild($div);
-    $div,
-      addEventListener('click', () => {
-        currentFolder = this;
-        currentFolder.active = falsethis.renderTasks();
-        let foldersClass = document.querySelectorAll('.folder');
-        foldersClass.forEach((f) => (f.classList.value = 'folder'));
-        let delBtns = document.querySelectorAll('.delete');
-        deleteBtns.forEach((button) => (button.src = src)); //TODO: add img src
-        if (!$div.classList.value.includes('active')) {
-          $div.classList.add('active');
-          $delete.src = src; //TODO: add img src
-        } else return;
-      });
+    $div.addEventListener('click', () => {
+      currentFolder = this;
+      currentFolder.active = falsethis.renderTasks();
+      let foldersClass = document.querySelectorAll('.folder');
+      foldersClass.forEach((f) => (f.classList.value = 'folder'));
+      let delBtns = document.querySelectorAll('.delete');
+      deleteBtns.forEach((button) => (button.src = './img/stock.jpg')); //TODO: add img src
+      if (!$div.classList.value.includes('active')) {
+        $div.classList.add('active');
+        $delete.src = './img/stock.jpg'; //TODO: add img src
+      } else return;
+    });
   }
 
   delete() {
