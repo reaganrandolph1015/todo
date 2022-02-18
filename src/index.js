@@ -1,4 +1,5 @@
 import { Folder, foldersArray, currentFolder } from './modules/folder';
+import { Task } from './modules/task';
 
 const $folderForm = document.getElementById('form-folder');
 
@@ -19,3 +20,5 @@ $folderForm.addEventListener('submit', (e) => {
   folders[folders.length - 1].classList.add('active');
   folders[folders.length - 1].lastChild.src = src; //TODO: add img src
 });
+
+const $taskForm = document.getElementById('form-task');
